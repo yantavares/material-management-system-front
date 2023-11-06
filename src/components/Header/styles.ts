@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   padding: 1rem 2rem;
   background-color: black;
-  height: 4rem;
+  height: 5rem;
 `;
 
 export const HeaderTitle = styled.h1`
@@ -16,4 +16,21 @@ export const HeaderTitle = styled.h1`
 
 export const Logo = styled.img`
   height: 2rem;
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+export const VerticalDivider = styled.div`
+  height: 2rem;
+  width: 1px;
+  background-color: white;
 `;

@@ -1,19 +1,27 @@
 import React from "react";
-import { HeaderContainer, HeaderTitle, Logo } from "./styles";
+import {
+  ButtonsContainer,
+  HeaderContainer,
+  HeaderTitle,
+  Logo,
+  TitleContainer,
+  VerticalDivider,
+} from "./styles";
 import UnB from "../../assets/unb.png";
-import Footer from "../Footer";
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <div>
+      <TitleContainer>
         <HeaderTitle>Empréstimo de Material</HeaderTitle>
-        <Logo src={UnB} />
-      </div>
-      <div>
-        <a href="">Login</a>
-        <a href="">Registro</a>
-      </div>
+        <VerticalDivider />
+        <h2>UnB</h2>
+      </TitleContainer>
+
+      <ButtonsContainer>
+        <button>Login</button>
+        <button>Registro</button>
+      </ButtonsContainer>
     </HeaderContainer>
   );
 };
