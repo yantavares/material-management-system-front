@@ -1,6 +1,4 @@
-=============================================================
-README - Sistema de Empréstimos de Livros e Materiais Escolares
-=============================================================
+# README - Sistema de Empréstimos de Livros e Materiais Escolares
 
 Este é o front-end do Sistema de Empréstimos de Livros e Materiais Escolares, um projeto desenvolvido para a disciplina Banco de Dados da Universidade de Brasília (UnB).
 
