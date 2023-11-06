@@ -7,7 +7,6 @@ import {
   TitleContainer,
   VerticalDivider,
 } from "./styles";
-import UnB from "../../assets/unb.png";
 
 const Header = () => {
   return (
