@@ -58,21 +58,6 @@ CONTRIBUIÇÕES:
 ---------------
 Contribuições são bem-vindas! Se você tem uma sugestão para melhorar o sistema, por favor, faça um fork do repositório, faça suas alterações e envie um pull request.
 
-LICENÇA:
----------
-Este projeto é distribuído sob a licença MIT. Veja o arquivo LICENSE.txt para mais detalhes ou visite https://opensource.org/licenses/MIT.
-
-CONTATO:
----------
-Para mais informações, contate os desenvolvedores pelo e-mail: [email dos desenvolvedores].
-
-AGRADECIMENTOS:
-----------------
-Gostaríamos de agradecer aos professores e colegas da Universidade de Brasília pelo suporte e orientação durante o desenvolvimento deste projeto.
-
-===================================================================
-Este arquivo README é um documento vivo e pode ser atualizado conforme o projeto evolui.
-===================================================================
 
 
 
