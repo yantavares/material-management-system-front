@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   display: flex;
-  background-color: gray;
+  background-color: #555;
   gap: 1rem;
   border: 1px solid lightgray;
   border-radius: 0.5rem;
@@ -28,4 +28,5 @@ export const HomeTextSection = styled.div`
 
 export const HomeText = styled.p`
   text-align: justify;
+  font-size: 1.1rem;
 `;

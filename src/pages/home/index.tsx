@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <Card>
       <HomeTextSection>
-        <h2>Home</h2>
+        <h2>Sobre nós</h2>
         <HomeText>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           Reprehenderit harum corporis quisquam vitae modi distinctio
