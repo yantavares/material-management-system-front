@@ -11,7 +11,7 @@ export const HeaderContainer = styled.header`
 
 export const HeaderTitle = styled.h1`
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 `;
 
 export const Logo = styled.img`

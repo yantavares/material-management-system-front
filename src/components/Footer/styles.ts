@@ -12,7 +12,7 @@ export const FooterContainer = styled.footer`
   padding: 0 2rem;
 `;
 export const FooterTitle = styled.h4`
-  color: white;
+  color: lightgray;
   font-weight: 500;
   font-size: 1.2rem;
   margin: 0;
@@ -22,7 +22,7 @@ export const Logo = styled.img`
 `;
 
 export const FooterAnchor = styled.a`
-  color: white;
+  color: lightgray;
   text-decoration: none;
   font-weight: 500;
   font-size: 1.2rem;
@@ -42,5 +42,5 @@ export const DevsContainer = styled.div`
 export const VerticalDivider = styled.div`
   height: 2rem;
   width: 1px;
-  background-color: white;
+  background-color: lightgray;
 `;
