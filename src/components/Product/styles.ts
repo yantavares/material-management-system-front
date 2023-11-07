@@ -1,13 +1,32 @@
 import styled from "styled-components";
 
-export const ProductContainer = styled.div`
+export const WholeProduct = styled.div`
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  height: 30rem;
+`;
+
+export const ProductImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid lightgray;
+  border: 1px solid gray;
   border-radius: 0.5rem;
-  width: 20rem;
-  height: 30rem;
-  box-shadow: 0 0 0.5rem lightgray;
+  height: 100%;
+  background-color: gray;
+  width: 30%;
+`;
+
+export const ProductInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  height: 100%;
+  background-color: gray;
+  width: 70%;
 `;

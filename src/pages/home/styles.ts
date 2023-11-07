@@ -8,6 +8,7 @@ export const HomeContainer = styled.div`
   width: 100%;
   height: 100%;
   align-items: center;
+  margin-bottom: 6rem;
 `;
 
 export const ProductsContainer = styled.div`

@@ -1,14 +1,20 @@
 import React from "react";
-import { ProductContainer } from "./styles";
+import {
+  ProductImageContainer,
+  ProductInfoContainer,
+  WholeProduct,
+} from "./styles";
 import unb from "../../assets/unb.png";
 
 const Product = ({ name, info }) => {
   return (
-    <ProductContainer>
-      <h2>{name}</h2>
-      <img src={unb} alt={info} />
-      <p>{info}</p>
-    </ProductContainer>
+    <WholeProduct>
+      <ProductImageContainer>
+        <h2>{name}</h2>
+        <img src={unb} alt={info} />
+      </ProductImageContainer>
+      <ProductInfoContainer>{info}</ProductInfoContainer>
+    </WholeProduct>
   );
 };
 export default Product;
