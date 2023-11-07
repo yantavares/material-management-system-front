@@ -44,11 +44,11 @@ export const ButtonsContainer = styled.div`
 `;
 
 interface ButtonProps {
-  selectedButton: boolean;
+  $selectedButton: boolean;
 }
 
 export const Button = styled.button<ButtonProps>`
   border-radius: 6rem;
   background-color: ${(props) =>
-    props.selectedButton ? "#292929" : "#0f0f0f"};
+    props.$selectedButton ? "#292929" : "#0f0f0f"};
 `;

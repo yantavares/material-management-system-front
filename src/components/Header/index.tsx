@@ -23,7 +23,7 @@ const Header = ({ selectedButton, setSelectedButton }) => {
           onClick={() => {
             setSelectedButton("home");
           }}
-          selectedButton={selectedButton === "home"}
+          $selectedButton={selectedButton === "home"}
         >
           Sobre
         </Button>
@@ -31,7 +31,7 @@ const Header = ({ selectedButton, setSelectedButton }) => {
           onClick={() => {
             setSelectedButton("products");
           }}
-          selectedButton={selectedButton === "products"}
+          $selectedButton={selectedButton === "products"}
         >
           Produtos
         </Button>
