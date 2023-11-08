@@ -21,9 +21,9 @@ const Header = ({ selectedButton, setSelectedButton }) => {
       <ButtonsContainer>
         <Button
           onClick={() => {
-            setSelectedButton("home");
+            setSelectedButton("about");
           }}
-          $selectedButton={selectedButton === "home"}
+          $selectedButton={selectedButton === "about"}
         >
           Sobre
         </Button>

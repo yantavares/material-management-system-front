@@ -17,7 +17,7 @@ export const VerticalDivider = styled.div`
   height: 100%;
 `;
 
-export const HomeTextSection = styled.div`
+export const AboutTextSection = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ export const HomeTextSection = styled.div`
   align-items: center;
 `;
 
-export const HomeText = styled.p`
+export const AboutText = styled.p`
   text-align: justify;
   font-size: 1.1rem;
 `;

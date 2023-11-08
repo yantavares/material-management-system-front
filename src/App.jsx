@@ -1,24 +1,15 @@
-import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 
-import "./App.css";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Products from "./pages/productsPage";
-import Home from "./pages/home";
+const HomePage = lazy(() => import("./pages/home"));
 
 function App() {
-  const [selectedButton, setSelectedButton] = useState("home");
-
   return (
-    <>
-      <Header
-        selectedButton={selectedButton}
-        setSelectedButton={setSelectedButton}
-      />
-      {selectedButton === "home" && <Home />}
-      {selectedButton === "products" && <Products />}
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
