@@ -29,4 +29,5 @@ export const AboutTextSection = styled.div`
 export const AboutText = styled.p`
   text-align: justify;
   font-size: 1.1rem;
+  overflow-y: auto;
 `;
