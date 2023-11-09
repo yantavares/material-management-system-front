@@ -1,11 +1,17 @@
 import React from "react";
-import { Card, AboutTextSection, VerticalDivider, AboutText } from "./styles";
+import {
+  Card,
+  AboutTextSection,
+  VerticalDivider,
+  AboutText,
+  AboutTextTitle,
+} from "./styles";
 
 const About = () => {
   return (
     <Card>
       <AboutTextSection>
-        <h2>Sobre nós</h2>
+        <AboutTextTitle>Sobre nós</AboutTextTitle>
         <AboutText>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           Reprehenderit harum corporis quisquam vitae modi distinctio

@@ -1,17 +1,27 @@
 import React from "react";
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div
         style={{
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: "100vh",
+          height: "90vh",
+          gap: "1rem",
         }}
       >
+        <button onClick={() => navigate("/")}>
+          <FontAwesomeIcon icon={faHouse} />
+        </button>
+
         <form className="form">
           <p className="form-title">Logar na sua conta</p>
           <div className="input-container">
@@ -63,7 +73,7 @@ const Login = () => {
 
           <p className="signup-link">
             Não possui conta?
-            <a href="">Registrar</a>
+            <a onClick={() => navigate("/register")}>Registrar</a>
           </p>
         </form>
       </div>
