@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   display: flex;
-  background-color: #ccc;
+  background-color: #bbb;
   color: #000;
   gap: 1rem;
   border: 1px solid lightgray;
@@ -14,7 +14,7 @@ export const Card = styled.div`
 `;
 
 export const VerticalDivider = styled.div`
-  border-left: 2px solid #bbb;
+  border-left: 2px solid #aaa;
   height: 100%;
 `;
 
