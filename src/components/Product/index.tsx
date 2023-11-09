@@ -5,14 +5,13 @@ import {
   ProductName,
   WholeProduct,
 } from "./styles";
-import unb from "../../assets/unb.png";
 
-const Product = ({ name, info }) => {
+const Product = ({ name, info, image }) => {
   return (
     <WholeProduct>
       <ProductImageContainer>
         <ProductName>{name}</ProductName>
-        <img src={unb} alt={info} />
+        <img src={image} alt={info} />
       </ProductImageContainer>
       <ProductInfoContainer>{info}</ProductInfoContainer>
     </WholeProduct>
