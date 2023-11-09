@@ -10,13 +10,27 @@ export const CardContainer = styled.div`
   gap: 1rem;
 `;
 
+export const AboutSubtitle = styled.i`
+  align-self: flex-start;
+  color: darkblue;
+  margin: 0;
+  padding: 0;
+`;
+
+export const AboutImage = styled.img`
+  height: 22%;
+  position: absolute;
+  bottom: 5%;
+`;
+
 export const Card = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
   background-color: #bbb;
   color: #000;
-  gap: 1rem;
   border: 1px solid lightgray;
   border-radius: 0.5rem;
   width: 40%;
@@ -39,6 +53,7 @@ export const AboutTextSection = styled.div`
 `;
 
 export const AboutText = styled.p`
+  align-self: flex-start;
   text-align: justify;
   font-size: 1.1rem;
   overflow-y: auto;

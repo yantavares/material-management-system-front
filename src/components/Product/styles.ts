@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const WholeProduct = styled.div`
   display: flex;
   gap: 1rem;
-  height: 30rem;
+  height: 28rem;
 `;
 
 export const ProductName = styled.h1`

@@ -2,7 +2,6 @@ import React from "react";
 import {
   ProductButton,
   ProductImageContainer,
-  ProductInfoContainer,
   ProductName,
   WholeProduct,
 } from "./styles";
