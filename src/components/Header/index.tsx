@@ -8,8 +8,10 @@ import {
   VerticalDivider,
   Button,
 } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ selectedButton, setSelectedButton }) => {
+  const navigate = useNavigate();
   return (
     <HeaderContainer>
       <TitleContainer>
@@ -38,8 +40,8 @@ const Header = ({ selectedButton, setSelectedButton }) => {
       </ButtonsContainer>
 
       <LoginContainer>
-        <button>Login</button>
-        <button>Registro</button>
+        <button onClick={() => navigate("/login")}>Login</button>
+        <button onClick={() => navigate("/register")}>Registro</button>
       </LoginContainer>
     </HeaderContainer>
   );
