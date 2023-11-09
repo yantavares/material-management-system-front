@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const WholeProduct = styled.div`
   display: flex;
   gap: 1rem;
-  width: 100%;
   height: 30rem;
 `;
 
@@ -23,7 +22,7 @@ export const ProductImageContainer = styled.div`
   height: 100%;
   background-color: #bbb;
   color: #000;
-  width: 30%;
+  width: 28rem;
 `;
 
 export const ProductInfoContainer = styled.div`
@@ -36,4 +35,17 @@ export const ProductInfoContainer = styled.div`
   height: 100%;
   background-color: #888;
   width: 70%;
+`;
+
+export const ProductButton = styled.button`
+  border-radius: 6rem;
+  background-color: #292929;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  width: max-content;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 12%;
 `;

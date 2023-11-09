@@ -5,12 +5,13 @@ import {
   VerticalDivider,
   AboutText,
   AboutTextTitle,
+  CardContainer,
 } from "./styles";
 
 const About = () => {
   return (
-    <Card>
-      <AboutTextSection>
+    <CardContainer>
+      <Card>
         <AboutTextTitle>Sobre nós</AboutTextTitle>
         <AboutText>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -18,19 +19,18 @@ const About = () => {
           laudantium, numquam voluptatem libero iusto dolorem commodi sequi fuga
           similique. Modi possimus vel repellat iste. Deleniti amet ad
           reiciendis veritatis et doloremque non pariatur autem quibusdam sequi
-          eaque expedita at iste molestias inventore, deserunt libero modi. Quo
-          recusandae reprehenderit explicabo neque voluptate, voluptatem dolore
-          repellat? Sed vel molestiae voluptatem harum quasi assumenda similique
-          dolorem, facere dolore deleniti qui eaque doloribus delectus repellat
-          quod mollitia nam? Obcaecati ducimus, dolore culpa eligendi
-          perferendis accusantium ratione vel laudantium.
+          eaque expedita at iste molestias inventore, deserunt libero modi.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit maiores
+          quos enim ex cum exercitationem sint laudantium nesciunt? Autem
+          incidunt temporibus saepe deleniti magni expedita perspiciatis
+          inventore animi consectetur in! Lorem ipsum, dolor sit amet
+          consectetur adipisicing elit. Ab ullam voluptatem aspernatur dolorem
+          temporibus quo accusantium. Veniam, quas impedit. Sit doloribus, saepe
+          in nobis laudantium praesentium harum vel quidem incidunt?
         </AboutText>
-      </AboutTextSection>
-      <VerticalDivider />
-      <AboutTextSection>
-        <p>more</p>
-      </AboutTextSection>
-    </Card>
+      </Card>
+      <Card>2</Card>
+    </CardContainer>
   );
 };
 export default About;
