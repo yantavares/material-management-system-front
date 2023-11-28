@@ -15,7 +15,7 @@ const Register = () => {
   const handleClick = (e) => {
     e.preventDefault();
 
-    if (!email || !password || !job) {
+    if (!email || !password || !job || !name || !lastName || job === "Função") {
       setErrorMessage("Por favor, preencha todos os campos!");
       return;
     }
