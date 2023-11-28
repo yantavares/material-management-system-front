@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../login/styles.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,12 +6,20 @@ import axios from "axios";
 const Register = () => {
   const navigate = useNavigate();
   const URL_API = import.meta.env.VITE_URL_API ?? "http://localhost:5005";
-  const [name, setName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [job, setJob] = React.useState("");
-  const handleClick = () => {
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [job, setJob] = useState("Usuário");
+  const [errorMessage, setErrorMessage] = useState("");
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    if (!email || !password || !job) {
+      setErrorMessage("Por favor, preencha todos os campos!");
+      return;
+    }
+
     axios
       .post(`${URL_API}/sign-up`, {
         nome: name,
@@ -19,13 +27,16 @@ const Register = () => {
         funcao: job,
         email: email,
         senha: password,
-        url_imagem: "",
+        url_imagem: "teste",
       })
       .then((response) => {
-        console.log(response);
+        if (response.data === "Created") {
+          navigate("/?msg=success");
+        }
       })
-      .catch((error) => {
-        console.error(error);
+      .catch((err) => {
+        setErrorMessage(err.message);
+        console.error(err);
       });
   };
   return (
@@ -40,6 +51,7 @@ const Register = () => {
           gap: "1rem",
         }}
       >
+        <h2>{errorMessage}</h2>
         {/* <button onClick={() => navigate("/")}>
           <FontAwesomeIcon icon={faHouse} />
         </button> */}
@@ -47,13 +59,14 @@ const Register = () => {
         <form className="form">
           <p className="form-title">Registro</p>
           <div style={{ display: "flex", gap: "1rem" }}>
-            <div className="input-container-small" style={{ width: "50%" }}>
+            <div className="input-container-small">
               <input
                 className="input"
                 placeholder="Seu nome"
                 type="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
               />
               <span>
                 <svg
@@ -78,6 +91,7 @@ const Register = () => {
                 type="name"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
+                required
               />
               <span>
                 <svg
@@ -103,6 +117,7 @@ const Register = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <span>
               <svg
@@ -127,6 +142,7 @@ const Register = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
 
             <span>
@@ -150,6 +166,33 @@ const Register = () => {
                 ></path>
               </svg>
             </span>
+          </div>
+          <div
+            style={{
+              backgroundColor: "#FFF",
+              height: "3rem",
+              margin: "1rem 0",
+              borderRadius: "0.4rem",
+            }}
+          >
+            <select
+              style={{
+                backgroundColor: "#FFF",
+                height: "100%",
+                color: "black",
+                width: "100%",
+                borderRadius: "0.4rem",
+                padding: "0.5rem",
+              }}
+              value={job}
+              onChange={(e) => setJob(e.target.value)}
+              required
+            >
+              <option value="">Função</option>
+              <option value="usuario">Usuario</option>
+              <option value="chefe de laboratório">Chefe de laboratório</option>
+              <option value="administrador">Administrador</option>
+            </select>
           </div>
           <button onClick={handleClick} className="submit" type="submit">
             Registrar

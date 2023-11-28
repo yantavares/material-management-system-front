@@ -1,11 +1,15 @@
 import React from "react";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const msg = queryParams.get("msg");
+
   return (
     <>
       <div
@@ -21,6 +25,8 @@ const Login = () => {
         {/* <button onClick={() => navigate("/home")}>
           <FontAwesomeIcon icon={faHouse} />
         </button> */}
+
+        {msg === "success" && <h3>Usuário registrado com sucesso!</h3>}
 
         <form className="form">
           <p className="form-title">Logar na sua conta</p>
