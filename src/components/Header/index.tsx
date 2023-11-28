@@ -48,7 +48,6 @@ const Header = ({ selectedButton, setSelectedButton }) => {
         >
           Sair
         </button>
-        <button onClick={() => navigate("/register")}>Registro</button>
       </LoginContainer>
     </HeaderContainer>
   );

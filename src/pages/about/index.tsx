@@ -30,7 +30,7 @@ const About = () => {
           empréstimo e compartilhe com outros. <b>Pedir empréstimos:</b> Busque
           materiais desejados, solicite empréstimos e acompanhe suas
           solicitações. <b>Login e Cadastro:</b> Crie sua conta ou faça login
-          para acessar todas as funcionalidades. <b>Acompanhe Empréstimos:</b>
+          para acessar todas as funcionalidades. <b>Acompanhe Empréstimos: </b>
           Veja o status das suas solicitações em "Meus Empréstimos". Simples
           assim! Estamos aqui para ajudar, caso precise de suporte.
         </AboutText>

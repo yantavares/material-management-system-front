@@ -42,7 +42,7 @@ const Login = () => {
       .then((response) => {
         if (response.data.token) {
           sessionStorage.setItem("userToken", response.data.token);
-          navigate("/home");
+          navigate(`/home?${response.data.token}`);
         }
       })
       .catch((err) => {
