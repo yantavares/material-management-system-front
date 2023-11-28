@@ -40,7 +40,14 @@ const Header = ({ selectedButton, setSelectedButton }) => {
       </ButtonsContainer>
 
       <LoginContainer>
-        <button onClick={() => navigate("/login")}>Login</button>
+        <button
+          onClick={() => {
+            sessionStorage.removeItem("userToken");
+            navigate("/?msg=exit");
+          }}
+        >
+          Sair
+        </button>
         <button onClick={() => navigate("/register")}>Registro</button>
       </LoginContainer>
     </HeaderContainer>
