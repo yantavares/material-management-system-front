@@ -18,9 +18,9 @@ const Login = () => {
           gap: "1rem",
         }}
       >
-        <button onClick={() => navigate("/")}>
+        {/* <button onClick={() => navigate("/home")}>
           <FontAwesomeIcon icon={faHouse} />
-        </button>
+        </button> */}
 
         <form className="form">
           <p className="form-title">Logar na sua conta</p>
@@ -73,7 +73,12 @@ const Login = () => {
 
           <p className="signup-link">
             Não possui conta?
-            <a onClick={() => navigate("/register")}>Registrar</a>
+            <a
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/register")}
+            >
+              Registrar
+            </a>
           </p>
         </form>
       </div>
