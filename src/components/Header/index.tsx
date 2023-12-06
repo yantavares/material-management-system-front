@@ -9,6 +9,8 @@ import {
   Button,
 } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ selectedButton, setSelectedButton }) => {
   const navigate = useNavigate();
@@ -40,6 +42,13 @@ const Header = ({ selectedButton, setSelectedButton }) => {
       </ButtonsContainer>
 
       <LoginContainer>
+        <button
+          onClick={() => {
+            navigate("/user?id=");
+          }}
+        >
+          <FontAwesomeIcon icon={faUser} />
+        </button>
         <button
           onClick={() => {
             sessionStorage.removeItem("userToken");
