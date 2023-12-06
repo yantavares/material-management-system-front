@@ -1,11 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
+  const [msg, setMsg] = useState(queryParams.get("msg"));
+
+  const URL_API = import.meta.env.VITE_URL_API ?? "http://localhost:5005";
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    if (msg) {
+      setTimeout(() => {
+        setMsg("");
+      }, 3000); // Clear msg after 5 seconds
+    }
+  }, [msg]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      setErrorMessage("Por favor, preencha todos os campos!");
+      return;
+    }
+
+    axios
+      .post(`${URL_API}/sign-in`, {
+        email: email,
+        senha: password,
+      })
+      .then((response) => {
+        if (response.data.token) {
+          sessionStorage.setItem("userToken", response.data.token);
+          navigate(`/home?${response.data.token}`);
+        }
+      })
+      .catch((err) => {
+        setErrorMessage(err.message);
+        console.error(err);
+      });
+  };
+
   return (
     <>
       <div
@@ -18,14 +63,27 @@ const Login = () => {
           gap: "1rem",
         }}
       >
-        <button onClick={() => navigate("/")}>
+        {/* <button onClick={() => navigate("/home")}>
           <FontAwesomeIcon icon={faHouse} />
-        </button>
+        </button> */}
+
+        <h3 style={{ height: "fit-content", margin: 0 }}>
+          {msg === "exit" && "Você saiu da sua conta com sucesso!"}
+        </h3>
+
+        <h2 style={{ height: "fit-content", margin: 0 }}> {errorMessage}</h2>
 
         <form className="form">
           <p className="form-title">Logar na sua conta</p>
           <div className="input-container">
-            <input className="input" placeholder="Seu e-mail" type="email" />
+            <input
+              className="input"
+              placeholder="Seu e-mail"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
             <span>
               <svg
                 stroke="currentColor"
@@ -43,7 +101,14 @@ const Login = () => {
             </span>
           </div>
           <div className="input-container">
-            <input className="input" placeholder="Sua senha" type="password" />
+            <input
+              className="input"
+              placeholder="Sua senha"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
 
             <span>
               <svg
@@ -67,13 +132,18 @@ const Login = () => {
               </svg>
             </span>
           </div>
-          <button className="submit" type="submit">
+          <button className="submit" type="submit" onClick={handleClick}>
             Entrar
           </button>
 
           <p className="signup-link">
             Não possui conta?
-            <a onClick={() => navigate("/register")}>Registrar</a>
+            <a
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/register")}
+            >
+              Registrar
+            </a>
           </p>
         </form>
       </div>
