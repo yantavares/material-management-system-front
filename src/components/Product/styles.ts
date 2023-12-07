@@ -47,5 +47,4 @@ export const ProductButton = styled.button`
   width: max-content;
   cursor: pointer;
   align-self: center;
-  margin-top: 12%;
 `;

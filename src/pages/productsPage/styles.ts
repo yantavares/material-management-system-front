@@ -17,3 +17,10 @@ export const ProductsContainer = styled.div`
   width: 100%;
   padding: 1rem;
 `;
+
+export const ButtonsContainer = styled.div`
+  padding: 1rem;
+  padding-bottom: 0;
+  display: flex;
+  gap: 1rem;
+`;

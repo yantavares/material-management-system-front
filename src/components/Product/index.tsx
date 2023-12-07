@@ -14,6 +14,7 @@ const Product = ({ name, info, image }) => {
       <ProductImageContainer>
         <ProductName>{name}</ProductName>
         <img src={image} alt={info} />
+        <p>{info}</p>
         <ProductButton>{<FontAwesomeIcon icon={faEye} />}</ProductButton>
       </ProductImageContainer>
     </WholeProduct>
