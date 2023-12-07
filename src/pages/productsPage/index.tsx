@@ -102,6 +102,8 @@ const ProductsPage = () => {
               name={book.titulo}
               info={book.descricao}
               image={UnB}
+              id={book.isbn}
+              type={"book"}
             />
           ))}
         {selectedButton === "materials" &&
@@ -111,6 +113,8 @@ const ProductsPage = () => {
               name={material.desc}
               info={material.serial}
               image={UnB}
+              id={material.id}
+              type={"material"}
             />
           ))}
       </div>
