@@ -4,15 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-interface User {
-  nome: string;
-  sobrenome: string;
-  funcao: string;
-  email: string;
-  senha: string;
-  url_imagem: string;
-}
-
 const UserComponent: React.FC = () => {
   const [userData, setUserData] = useState<User | null>(null);
 
@@ -70,15 +61,14 @@ const UserComponent: React.FC = () => {
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         User Information
       </h1>
-      <button style={{ width: "80px" }}>
-        <FontAwesomeIcon
-          icon={faHouse}
-          onClick={(e) => {
-            e.preventDefault();
-            navigate("/home");
-          }}
-          style={{ cursor: "pointer" }}
-        />
+      <button
+        style={{ width: "80px" }}
+        onClick={(e) => {
+          e.preventDefault();
+          navigate("/home");
+        }}
+      >
+        <FontAwesomeIcon icon={faHouse} style={{ cursor: "pointer" }} />
       </button>
       <div
         style={{

@@ -1,32 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Product from "../../components/product";
 import UnB from "../../assets/unb.png";
 import { Button } from "../../components/Header/styles";
 import { ButtonsContainer } from "./styles";
-
-interface Book {
-  isbn: string;
-  descricao: string;
-  data_aquisicao: string;
-  conservacao: string;
-  localizacao: string;
-  quantidade: number;
-  titulo: string;
-  url_capa: string;
-}
-
-interface Material {
-  id: number;
-  desc: string;
-  data_Aquisicao: string;
-  conservacao: string;
-  localizacao: string;
-  quantidade: number;
-  serial: string;
-  url_imagem: string;
-  id_categoria_material: number;
-}
+import Product from "../../components/Product";
 
 const ProductsPage = () => {
   const [books, setBooks] = useState<Book[]>([]);
@@ -101,7 +78,7 @@ const ProductsPage = () => {
               key={index}
               name={book.titulo}
               info={book.descricao}
-              image={UnB}
+              image={book.url_capa || UnB}
               id={book.isbn}
               type={"book"}
             />
@@ -112,7 +89,7 @@ const ProductsPage = () => {
               key={index}
               name={material.desc}
               info={material.serial}
-              image={UnB}
+              image={material.url_imagem || UnB}
               id={material.id}
               type={"material"}
             />
