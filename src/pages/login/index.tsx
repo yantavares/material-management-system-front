@@ -18,6 +18,28 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const fetchUserId = (email: string, token: string) => {
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
+
+    axios
+      .get(`http://localhost:5005/user/${email}/email`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Add the Authorization header
+        },
+      })
+      .then((response) => {
+        // Assuming the user ID is in the response
+        const userId = response.data.id;
+        sessionStorage.setItem("userId", userId);
+      })
+      .catch((error) => {
+        console.error("Error fetching user ID:", error);
+      });
+  };
+
   useEffect(() => {
     if (msg) {
       setTimeout(() => {
@@ -42,7 +64,8 @@ const Login = () => {
       .then((response) => {
         if (response.data.token) {
           sessionStorage.setItem("userToken", response.data.token);
-          sessionStorage.setItem("userID", response.data.id);
+
+          fetchUserId(email, response.data.token);
           navigate(`/home?${response.data.token}`);
         }
       })

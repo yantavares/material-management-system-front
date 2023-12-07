@@ -44,7 +44,7 @@ const Header = ({ selectedButton, setSelectedButton }) => {
       <LoginContainer>
         <button
           onClick={() => {
-            navigate("/user?id=");
+            navigate("/user");
           }}
         >
           <FontAwesomeIcon icon={faUser} />
