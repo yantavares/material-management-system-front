@@ -42,6 +42,7 @@ const Login = () => {
       .then((response) => {
         if (response.data.token) {
           sessionStorage.setItem("userToken", response.data.token);
+          sessionStorage.setItem("userID", response.data.id);
           navigate(`/home?${response.data.token}`);
         }
       })
