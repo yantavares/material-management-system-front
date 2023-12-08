@@ -8,7 +8,7 @@ function App() {
   const [selectedButton, setSelectedButton] = useState("about");
 
   return (
-    <>
+    <div style={{ marginBottom: "10rem" }}>
       <Header
         selectedButton={selectedButton}
         setSelectedButton={setSelectedButton}
@@ -16,7 +16,7 @@ function App() {
       {selectedButton === "about" && <About />}
       {selectedButton === "products" && <Products />}
       <Footer />
-    </>
+    </div>
   );
 }
 
