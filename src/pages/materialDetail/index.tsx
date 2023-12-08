@@ -91,7 +91,7 @@ const MaterialDetail = () => {
     }
 
     axios
-      .get(`http://localhost:5005/category/book/${id}`, {
+      .get(`http://localhost:5005/category/material/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -135,7 +135,9 @@ const MaterialDetail = () => {
       </p>
       <p style={{ marginBottom: "10px" }}>
         <strong>Categorias:</strong>
-        {categories.map((cat) => cat.nome).join(", ")}
+        {categories.map((cat, index) => (
+          <p key={index}>{cat.nome}</p>
+        ))}
       </p>
       <p style={{ marginBottom: "10px" }}>
         <strong>Serial:</strong> {material.serial}
