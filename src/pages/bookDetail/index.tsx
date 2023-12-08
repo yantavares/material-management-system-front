@@ -17,6 +17,7 @@ interface IEditedBook {
 
 const BookDetail = () => {
   const [book, setBook] = useState<Book | null>(null);
+  const [categories, setCategories] = useState<Categoria[]>([]);
   const [editMode, setEditMode] = useState(false);
   const [editedBook, setEditedBook] = useState<IEditedBook>({});
   const [toggleFetch, setToggleFetch] = useState(false);
@@ -99,6 +100,28 @@ const BookDetail = () => {
       });
   }, [isbn, toggleFetch]);
 
+  useEffect(() => {
+    const token = sessionStorage.getItem("userToken");
+
+    if (!token) {
+      console.error("No token found in session storage");
+      return;
+    }
+
+    axios
+      .get(`http://localhost:5005/category/book/${isbn}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching book categories:", error);
+      });
+  }, [isbn, toggleFetch]);
+
   if (!book) return <div>Loading...</div>;
 
   return (
@@ -135,6 +158,9 @@ const BookDetail = () => {
             {author.sobrenome}, {author.nome}
           </p>
         ))}
+      <strong>Categorias:</strong>
+      {categories &&
+        categories.map((category, index) => <p key={index}>{category.nome}</p>)}
       <p style={{ marginBottom: "10px" }}>
         <strong>Descrição:</strong> {book.descricao}
       </p>

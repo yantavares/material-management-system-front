@@ -32,6 +32,11 @@ interface User {
   url_imagem: string;
 }
 
+interface Categoria {
+  id: number;
+  nome: string;
+}
+
 interface Autor {
   id: number;
   nome: string;

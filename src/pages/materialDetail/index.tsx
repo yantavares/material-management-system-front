@@ -17,6 +17,7 @@ interface IUpdateMaterial {
 const MaterialDetail = () => {
   const [material, setMaterial] = useState<Material | null>(null);
   const [editMode, setEditMode] = useState(false);
+  const [categories, setCategories] = useState<Categoria[]>([]);
   const [editedMaterial, setEditedMaterial] = useState<IUpdateMaterial>({
     id_categoria_material: material?.id_categoria_material,
   });
@@ -81,6 +82,28 @@ const MaterialDetail = () => {
       });
   }, [id, toggleFetch]);
 
+  useEffect(() => {
+    const token = sessionStorage.getItem("userToken");
+
+    if (!token) {
+      console.error("No token found in session storage");
+      return;
+    }
+
+    axios
+      .get(`http://localhost:5005/category/book/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching material categories:", error);
+      });
+  }, [id, toggleFetch]);
+
   if (!material) return <div>Loading...</div>;
 
   return (
@@ -109,6 +132,10 @@ const MaterialDetail = () => {
       />
       <p style={{ marginBottom: "10px" }}>
         <strong>ID:</strong> {material.id}
+      </p>
+      <p style={{ marginBottom: "10px" }}>
+        <strong>Categorias:</strong>
+        {categories.map((cat) => cat.nome).join(", ")}
       </p>
       <p style={{ marginBottom: "10px" }}>
         <strong>Serial:</strong> {material.serial}
