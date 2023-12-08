@@ -151,9 +151,18 @@ const BookDetail = () => {
       <p style={{ marginBottom: "10px" }}>
         <strong>Quantidade:</strong> {book.quantidade}
       </p>
-      <button onClick={() => setEditMode(true)}>
-        <FontAwesomeIcon icon={faEdit} />
-      </button>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          placeItems: "center",
+          placeContent: "center",
+        }}
+      >
+        <button onClick={() => setEditMode(true)}>
+          <FontAwesomeIcon icon={faEdit} />
+        </button>
+      </div>
       {editMode && (
         <form>
           <div style={{ display: "flex", flexDirection: "column" }}>
