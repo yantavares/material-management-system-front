@@ -32,6 +32,13 @@ interface User {
   url_imagem: string;
 }
 
+interface Autor {
+  id: number;
+  nome: string;
+  sobrenome: string;
+  email: string;
+}
+
 interface Material {
   id: number;
   desc: string;
