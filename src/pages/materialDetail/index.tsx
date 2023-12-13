@@ -71,8 +71,12 @@ const MaterialDetail = () => {
           Authorization: `Bearer ${token}`,
         },
       })
+      .then(() => {
+        alert(`Empréstimo solicitado com sucesso`)
+      })
       .catch((error) => {
-        console.error("Error requesting book:", error);
+        console.error("Error requesting loan:", error);
+        alert(`Houve um erro ao solicitar o empréstimo: ${error.response.data.error}`)
       });
   };
 
