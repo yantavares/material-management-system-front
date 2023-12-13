@@ -56,6 +56,25 @@ const BookDetail = () => {
       });
   };
 
+  const RequestLoan = (e) => {
+    const token = sessionStorage.getItem("userToken");
+
+    if (!token) {
+      console.error("No token found in session storage");
+      return;
+    }
+
+    axios
+      .post(`http://localhost:5005/loan/${isbn}`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .catch((error) => {
+        console.error("Error requesting book:", error);
+      });
+  };
+
   useEffect(() => {
     const token = sessionStorage.getItem("userToken");
 
@@ -71,7 +90,7 @@ const BookDetail = () => {
         },
       })
       .then((response) => {
-        setAuthors(response.data);
+        // setAuthors(response.data);
       })
       .catch((error) => {
         console.error("Error fetching book details:", error);
@@ -177,6 +196,7 @@ const BookDetail = () => {
       <p style={{ marginBottom: "10px" }}>
         <strong>Quantidade:</strong> {book.quantidade}
       </p>
+      <button style={{ margin: 'auto', marginBottom: '10px',display: 'block' }} onClick={RequestLoan}>Solicitar Empréstimo</button>
       <div
         style={{
           display: "flex",
