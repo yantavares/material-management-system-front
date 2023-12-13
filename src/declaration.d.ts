@@ -55,3 +55,13 @@ interface Material {
   url_imagem: string;
   id_categoria_material: number;
 }
+
+interface Loan {
+  id: string;
+  id_usuario: string;
+  id_item: string;
+  data_emprestimo: string;
+  data_devolucao: string;
+  status: boolean;
+  multa: string;
+}
