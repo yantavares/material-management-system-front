@@ -71,6 +71,7 @@ const ProductsPage = () => {
             onClick={() => {
               setShowFilters(!showFilters);
             }}
+            style={{position: "relative"}}
             $selectedButton={selectedButton === "books"}
           >
             Filtros
