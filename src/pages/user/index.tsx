@@ -99,7 +99,7 @@ const UserComponent: React.FC = () => {
         <p>Email: {userData.email}</p>
       </div>
       <h2>Empréstimos</h2>
-      <div>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
         {userLoans?.map((loan, index) => {
           return (
             <div
