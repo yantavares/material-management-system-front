@@ -24,3 +24,32 @@ export const ButtonsContainer = styled.div`
   display: flex;
   gap: 1rem;
 `;
+
+const FilterContainer = styled.div`
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+`;
+
+const FilterTitle = styled.h4`
+  margin-bottom: 15px;
+`;
+
+const RadioButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  label {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+`;
+
+const Dropdown = styled.select`
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+`;

@@ -4,11 +4,13 @@ import UnB from "../../assets/unb.png";
 import { Button } from "../../components/Header/styles";
 import { ButtonsContainer } from "./styles";
 import Product from "../../components/Product";
+import BookFilterComponent from "../../components/BookFilter";
 
 const ProductsPage = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [materials, setMaterials] = useState<Material[]>([]);
   const [selectedButton, setSelectedButton] = useState("books");
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     const token = sessionStorage.getItem("userToken");
@@ -45,24 +47,37 @@ const ProductsPage = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <ButtonsContainer>
-        <Button
-          onClick={() => {
-            setSelectedButton("books");
-          }}
-          $selectedButton={selectedButton === "books"}
-        >
-          Livros
-        </Button>
-        <Button
-          onClick={() => {
-            setSelectedButton("materials");
-          }}
-          $selectedButton={selectedButton === "materials"}
-        >
-          Materiais
-        </Button>
-      </ButtonsContainer>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <ButtonsContainer>
+          <Button
+            onClick={() => {
+              setSelectedButton("books");
+            }}
+            $selectedButton={selectedButton === "books"}
+          >
+            Livros
+          </Button>
+          <Button
+            onClick={() => {
+              setSelectedButton("materials");
+            }}
+            $selectedButton={selectedButton === "materials"}
+          >
+            Materiais
+          </Button>
+        </ButtonsContainer>
+        <ButtonsContainer>
+          <Button
+            onClick={() => {
+              setShowFilters(!showFilters);
+            }}
+            $selectedButton={selectedButton === "books"}
+          >
+            Filtros
+          </Button>
+        </ButtonsContainer>
+        <BookFilterComponent show={showFilters} />
+      </div>
       <div
         style={{
           display: "flex",
