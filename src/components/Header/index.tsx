@@ -39,6 +39,14 @@ const Header = ({ selectedButton, setSelectedButton }) => {
         >
           Produtos
         </Button>
+        <Button
+          onClick={() => {
+            setSelectedButton("loans");
+          }}
+          $selectedButton={selectedButton === "loans"}
+        >
+          Empréstimos
+        </Button>
       </ButtonsContainer>
 
       <LoginContainer>

@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import About from "../about";
 import Products from "../productsPage";
+import Loans from "../loans";
 
 function App() {
   const [selectedButton, setSelectedButton] = useState("about");
@@ -15,6 +16,7 @@ function App() {
       />
       {selectedButton === "about" && <About />}
       {selectedButton === "products" && <Products />}
+      {selectedButton === "contact" && <Loans />}
       <Footer />
     </div>
   );

@@ -40,7 +40,7 @@ export const ButtonsContainer = styled.div`
   display: flex;
   gap: 1rem;
   position: absolute;
-  left: 43%;
+  left: 38%;
 `;
 
 interface ButtonProps {
