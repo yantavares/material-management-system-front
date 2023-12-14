@@ -5,6 +5,7 @@ import { Button } from "../../components/Header/styles";
 import { ButtonsContainer } from "./styles";
 import Product from "../../components/Product";
 import BookFilterComponent from "../../components/BookFilter";
+import MaterialFilterComponent from "../../components/MaterialFilter";
 
 const ProductsPage = () => {
   const [books, setBooks] = useState<Book[]>([]);
@@ -77,7 +78,12 @@ const ProductsPage = () => {
             Filtros
           </Button>
         </ButtonsContainer>
-        <BookFilterComponent show={showFilters} />
+        {selectedButton === "books" ? ( <BookFilterComponent show={showFilters} />) :
+        selectedButton === "materials" && (
+         <MaterialFilterComponent show={showFilters} />)
+        }
+    
+       
       </div>
       <div
         style={{
