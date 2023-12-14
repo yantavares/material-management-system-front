@@ -93,7 +93,7 @@ const UserComponent: React.FC = () => {
       <div
         style={{ display: "flex", justifyContent: "space-around", gap: "1rem" }}
       >
-        <button onClick={toggleNewMaterialForm}>Novo Mat.</button>
+        {/* <button onClick={toggleNewMaterialForm}>Novo Mat.</button> */}
         <button
           style={{ width: "80px" }}
           onClick={(e) => {
@@ -103,7 +103,7 @@ const UserComponent: React.FC = () => {
         >
           <FontAwesomeIcon icon={faHouse} style={{ cursor: "pointer" }} />
         </button>
-        <button onClick={toggleNewBookForm}>Novo Livro</button>
+        {/* <button onClick={toggleNewBookForm}>Novo Livro</button> */}
       </div>
       {showNewMaterialForm && (
         <MaterialForm showToggle={toggleNewMaterialForm} />

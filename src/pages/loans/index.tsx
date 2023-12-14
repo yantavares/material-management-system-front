@@ -66,22 +66,22 @@ const Loans = () => {
                 />
               )
           )}
-        {loans &&
+        {/* {loans &&
           loans.map(
-            (loan, index) =>
-              loan.id_usuario === userId && (
+            (loanMat, index) =>
+              loanMat.id_usuario === userId && (
                 <Product
                   key={index}
-                  name={loan.desc}
-                  info={loan.serial}
-                  image={loan.url_capa || UnB}
-                  id={loan.isbn ? loan.isbn : loan.id}
+                  name={loanMat.desc}
+                  info={loanMat.serial}
+                  image={loanMat.url_capa || UnB}
+                  id={loanMat.isbn ? loanMat.isbn : loanMat.id}
                   type={"book"}
                   showLoanButton={true}
-                  multa={loan.multa}
+                  multa={loanMat.multa}
                 />
               )
-          )}
+          )} */}
       </div>
     </>
   );
