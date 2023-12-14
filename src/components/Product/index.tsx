@@ -30,7 +30,22 @@ const Product = ({ name, info, image, id, type, showLoanButton = false }) => {
           {<FontAwesomeIcon icon={faEye} />}
         </ProductButton>
         {showLoanButton && (
-          <ProductButton onClick={() => {}}>Estender prazo</ProductButton>
+          <div
+            style={{
+              display: "flex",
+              gap: "2rem",
+              width: "100%",
+              justifyContent: "center",
+            }}
+          >
+            <ProductButton onClick={() => {}}>Estender prazo</ProductButton>
+            <ProductButton
+              style={{ padding: "0.5rem 2.4rem" }}
+              onClick={() => {}}
+            >
+              Devolver
+            </ProductButton>
+          </div>
         )}
       </ProductImageContainer>
     </WholeProduct>
