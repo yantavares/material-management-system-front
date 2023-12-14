@@ -12,8 +12,6 @@ interface ImportMeta {
   };
 }
 
-
-
 interface Book {
   isbn: string;
   descricao: string;
@@ -25,6 +23,8 @@ interface Book {
   url_capa: string;
   id_categoria_livro: number;
   id_autor: number;
+  categorias: string;
+  autores: string;
 }
 
 interface User {
@@ -58,6 +58,7 @@ interface Material {
   serial: string;
   url_imagem: string;
   id_categoria_material: number;
+  nome: string;
 }
 
 interface Loan {

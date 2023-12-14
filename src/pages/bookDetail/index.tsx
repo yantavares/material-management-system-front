@@ -30,11 +30,11 @@ const BookDetail = () => {
   const [quantidade, setQuantidade] = useState(0);
 
   const { isbn } = useParams<{ isbn: string }>();
+  const token = sessionStorage.getItem("userToken");
+  const userRole = sessionStorage.getItem("userRole");
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-
-    const token = sessionStorage.getItem("userToken");
 
     if (!token) {
       console.error("No token found in session storage");
@@ -101,12 +101,12 @@ const BookDetail = () => {
         },
       })
       .then((response) => {
-        // setAuthors(response.data);
+        setAuthors(response.data);
       })
       .catch((error) => {
         console.error("Error fetching book details:", error);
       });
-  }, [authors]);
+  }, [isbn, toggleFetch]);
 
   useEffect(() => {
     const token = sessionStorage.getItem("userToken");
@@ -221,9 +221,11 @@ const BookDetail = () => {
           placeContent: "center",
         }}
       >
-        <button onClick={() => setEditMode(true)}>
-          <FontAwesomeIcon icon={faEdit} />
-        </button>
+        {userRole !== "usuario" && (
+          <button onClick={() => setEditMode(true)}>
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+        )}
       </div>
       {editMode && (
         <form>

@@ -33,7 +33,9 @@ const Login = () => {
       .then((response) => {
         // Assuming the user ID is in the response
         const userId = response.data.id;
+        const userRole = response.data.funcao;
         sessionStorage.setItem("userId", userId);
+        sessionStorage.setItem("userRole", userRole);
       })
       .catch((error) => {
         console.error("Error fetching user ID:", error);

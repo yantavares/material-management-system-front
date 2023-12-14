@@ -16,7 +16,6 @@ const ProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedAuthor, setSelectedAuthor] = useState("all");
 
-
   useEffect(() => {
     const token = sessionStorage.getItem("userToken");
 
@@ -50,6 +49,8 @@ const ProductsPage = () => {
     }
   }, [selectedButton]);
 
+  console.log(selectedAuthor, selectedCategory);
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -76,17 +77,29 @@ const ProductsPage = () => {
             onClick={() => {
               setShowFilters(!showFilters);
             }}
-            style={{position: "relative"}}
+            style={{ position: "relative" }}
             $selectedButton={selectedButton === "books"}
           >
             Filtros
           </Button>
         </ButtonsContainer>
-        {selectedButton === "books" ? ( <BookFilterComponent show={showFilters} selectedAuthor={selectedAuthor} selectedCategory={selectedCategory} setSelectedAuthor={setSelectedAuthor} setSelectedCategory={setSelectedCategory} />) :
-        selectedButton === "materials" && (
-         <MaterialFilterComponent show={showFilters} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />)
-        }
-    
+        {selectedButton === "books" ? (
+          <BookFilterComponent
+            show={showFilters}
+            selectedAuthor={selectedAuthor}
+            selectedCategory={selectedCategory}
+            setSelectedAuthor={setSelectedAuthor}
+            setSelectedCategory={setSelectedCategory}
+          />
+        ) : (
+          selectedButton === "materials" && (
+            <MaterialFilterComponent
+              show={showFilters}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+          )
+        )}
       </div>
       <div
         style={{
@@ -98,31 +111,37 @@ const ProductsPage = () => {
         }}
       >
         {selectedButton === "books" &&
-          books.map((book, index) => (
-            ((selectedAuthor === "all" || book.id_autor.toString() === selectedAuthor)  &&((selectedCategory === "all" ||
-            book.id_categoria_livro.toString() === selectedCategory)) &&
-            <Product
-              key={index}
-              name={book.titulo}
-              info={book.descricao}
-              image={book.url_capa || UnB}
-              id={book.isbn}
-              type={"book"}
-            />)
-          ))}
+          books.map(
+            (book, index) =>
+              (selectedAuthor === "all" ||
+                book.autores.toString().includes(selectedAuthor)) &&
+              (selectedCategory === "all" ||
+                book.categorias.toString().includes(selectedCategory)) && (
+                <Product
+                  key={index}
+                  name={book.titulo}
+                  info={book.descricao}
+                  image={book.url_capa || UnB}
+                  id={book.isbn}
+                  type={"book"}
+                />
+              )
+          )}
         {selectedButton === "materials" &&
-          materials.map((material, index) => (
-            ((selectedCategory === "all" ||
-            material.id_categoria_material.toString() === selectedCategory)) &&
-            <Product
-              key={index}
-              name={material.desc}
-              info={material.serial}
-              image={material.url_imagem || UnB}
-              id={material.id}
-              type={"material"}
-            />
-          ))}
+          materials.map(
+            (material, index) =>
+              (selectedCategory === "all" ||
+                material.nome.toString() === selectedCategory) && (
+                <Product
+                  key={index}
+                  name={material.desc}
+                  info={material.serial}
+                  image={material.url_imagem || UnB}
+                  id={material.id}
+                  type={"material"}
+                />
+              )
+          )}
       </div>
     </div>
   );

@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-const FilterComponent = ({ show, selectedCategory, setSelectedCategory, selectedAuthor, setSelectedAuthor }) => {
+const FilterComponent = ({
+  show,
+  selectedCategory,
+  setSelectedCategory,
+  selectedAuthor,
+  setSelectedAuthor,
+}) => {
   const [categories, setCategories] = useState<Categoria[]>([]);
 
   const [authors, setAuthors] = useState<Autor[]>([]);
@@ -16,7 +22,6 @@ const FilterComponent = ({ show, selectedCategory, setSelectedCategory, selected
         .then((response) => response.json())
         .then((data) => {
           setCategories(data); // Assuming the response is an array of categories
-
         })
         .catch((error) => {
           console.error("Error fetching categories:", error);
@@ -62,65 +67,64 @@ const FilterComponent = ({ show, selectedCategory, setSelectedCategory, selected
         margin: "1rem",
         position: "absolute",
         right: "1rem",
-        top: "9rem"
+        top: "9rem",
       }}
     >
-     <div>
-      <p>Categorias:</p>
-      {/* Category Selection */}
-      <input
-        type="radio"
-        name="all"
-        id="all1"
-        value={"all"}
-        checked={selectedCategory === "all"}
-        onChange={handleCategoryChange}
-      />
-      <label htmlFor="all1">{"Todos"}</label>
+      <div>
+        <p>Categorias:</p>
+        {/* Category Selection */}
+        <input
+          type="radio"
+          name="all"
+          id="all1"
+          value={"all"}
+          checked={selectedCategory === "all"}
+          onChange={handleCategoryChange}
+        />
+        <label htmlFor="all1">{"Todos"}</label>
 
-      {categories?.map((category) => (
-        <div key={category.id}>
-          <input
-            type="radio"
-            id={`category_${category.id}`}
-            name="categoria"
-            value={category.id.toString()}
-            checked={selectedCategory === category.id.toString()}
-            onChange={handleCategoryChange}
-          />
-          <label htmlFor={`category_${category.id}`}>{category.nome}</label>
-        </div>
-      ))}
-    </div>
-    <div>
-      <p>Autores:</p>
-      {/* Author Selection */}
-      <input
-        type="radio"
-        name="all2"
-        id="all2"
-        value={"all"}
-        checked={selectedAuthor === "all"}
-        onChange={handleAuthorChange}
-      />
-      <label htmlFor="all2">{"Todos"}</label>
+        {categories?.map((category) => (
+          <div key={category.id}>
+            <input
+              type="radio"
+              id={`category_${category.id}`}
+              name="categoria"
+              value={category.nome.toString()}
+              checked={selectedCategory === category.nome.toString()}
+              onChange={handleCategoryChange}
+            />
+            <label htmlFor={`category_${category.id}`}>{category.nome}</label>
+          </div>
+        ))}
+      </div>
+      <div>
+        <p>Autores:</p>
+        {/* Author Selection */}
+        <input
+          type="radio"
+          name="all2"
+          id="all2"
+          value={"all"}
+          checked={selectedAuthor === "all"}
+          onChange={handleAuthorChange}
+        />
+        <label htmlFor="all2">{"Todos"}</label>
 
-      {authors?.map((author) => (
-        <div key={author.id}>
-          <input
-            type="radio"
-            id={`author_${author.id}`}
-            name="autor"
-            value={author.id.toString()}
-            checked={selectedAuthor === author.id.toString()}
-            onChange={handleAuthorChange}
-          />
-          <label htmlFor={`author_${author.id}`}>{author.nome}</label>
-        </div>
-      ))}
+        {authors?.map((author) => (
+          <div key={author.id}>
+            <input
+              type="radio"
+              id={`author_${author.id}`}
+              name="autor"
+              value={author.nome.toString()}
+              checked={selectedAuthor === author.nome.toString()}
+              onChange={handleAuthorChange}
+            />
+            <label htmlFor={`author_${author.id}`}>{author.nome}</label>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-  
   );
 };
 

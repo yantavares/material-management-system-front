@@ -65,8 +65,8 @@ const MaterialFilterComponent = ({
               type="radio"
               id={`category_${category.id}`}
               name="categoria"
-              value={category.id.toString()}
-              checked={selectedCategory === category.id.toString()}
+              value={category.nome.toString()}
+              checked={selectedCategory === category.nome.toString()}
               onChange={handleCategoryChange}
             />
             <label htmlFor={`category_${category.id}`}>{category.nome}</label>

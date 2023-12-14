@@ -31,6 +31,8 @@ const MaterialDetail = () => {
 
   const { id } = useParams<{ id: string }>();
 
+  const userRole = sessionStorage.getItem("userRole");
+
   const handleEditSubmit = () => {
     const token = sessionStorage.getItem("userToken");
 
@@ -66,17 +68,23 @@ const MaterialDetail = () => {
     }
 
     axios
-      .post(`http://localhost:5005/loan/${id}`, {}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .post(
+        `http://localhost:5005/loan/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then(() => {
-        alert(`Empréstimo solicitado com sucesso`)
+        alert(`Empréstimo solicitado com sucesso`);
       })
       .catch((error) => {
         console.error("Error requesting loan:", error);
-        alert(`Houve um erro ao solicitar o empréstimo: ${error.response.data.error}`)
+        alert(
+          `Houve um erro ao solicitar o empréstimo: ${error.response.data.error}`
+        );
       });
   };
 
@@ -178,7 +186,12 @@ const MaterialDetail = () => {
       <p style={{ marginBottom: "10px" }}>
         <strong>Quantidade:</strong> {material.quantidade}
       </p>
-      <button style={{ margin: 'auto', marginBottom: '10px',display: 'block' }} onClick={RequestLoan}>Solicitar Empréstimo</button>
+      <button
+        style={{ margin: "auto", marginBottom: "10px", display: "block" }}
+        onClick={RequestLoan}
+      >
+        Solicitar Empréstimo
+      </button>
       <div
         style={{
           display: "flex",
@@ -187,9 +200,11 @@ const MaterialDetail = () => {
           width: "100%",
         }}
       >
-        <button onClick={() => setEditMode(true)}>
-          <FontAwesomeIcon icon={faEdit} />
-        </button>
+        {userRole !== "usuario" && (
+          <button onClick={() => setEditMode(true)}>
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+        )}
       </div>
       {editMode && (
         <form
