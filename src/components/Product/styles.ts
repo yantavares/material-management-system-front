@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
-export const WholeProduct = styled.div`
+interface IProp {
+  height: string;
+}
+
+export const WholeProduct = styled.div<IProp>`
   display: flex;
   gap: 1rem;
-  height: 28rem;
+  height: ${(props) => props.height ?? "28rem"};
 `;
 
 export const ProductName = styled.h1`

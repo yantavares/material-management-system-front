@@ -4,21 +4,36 @@ import UnB from "../../assets/unb.png";
 import Product from "../../components/Product";
 
 const Loans = () => {
-  const token = sessionStorage.getItem("userToken");
+  const token = sessionStorage.getItem("userToken") || "";
+  const userId = sessionStorage.getItem("userId");
 
   if (!token) {
     console.error("No token found in session storage");
     return;
   }
   const [loans, setLoans] = useState<any[]>([]);
+  const [bookLoans, setBookLoans] = useState<any[]>([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/loan", {
+      .get("http://localhost:5005/loan/material", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setLoans(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching books:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5005/loan/book", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        setBookLoans(response.data);
       })
       .catch((error) => {
         console.error("Error fetching books:", error);
@@ -35,18 +50,38 @@ const Loans = () => {
           padding: "2rem",
         }}
       >
+        {bookLoans &&
+          bookLoans.map(
+            (loan, index) =>
+              loan.id_usuario === userId && (
+                <Product
+                  key={index}
+                  name={loan.titulo}
+                  info={loan.descricao}
+                  image={loan.url_capa || UnB}
+                  id={loan.isbn ? loan.isbn : loan.id}
+                  type={"book"}
+                  showLoanButton={true}
+                  multa={loan.multa}
+                />
+              )
+          )}
         {loans &&
-          loans.map((loan, index) => (
-            <Product
-              key={index}
-              name={loan.titulo}
-              info={loan.descricao}
-              image={loan.url_capa || UnB}
-              id={loan.isbn ? loan.isbn : loan.id}
-              type={"book"}
-              showLoanButton={true}
-            />
-          ))}
+          loans.map(
+            (loan, index) =>
+              loan.id_usuario === userId && (
+                <Product
+                  key={index}
+                  name={loan.desc}
+                  info={loan.serial}
+                  image={loan.url_capa || UnB}
+                  id={loan.isbn ? loan.isbn : loan.id}
+                  type={"book"}
+                  showLoanButton={true}
+                  multa={loan.multa}
+                />
+              )
+          )}
       </div>
     </>
   );

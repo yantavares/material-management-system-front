@@ -10,7 +10,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-const Product = ({ name, info, image, id, type, showLoanButton = false }) => {
+const Product = ({
+  name,
+  info,
+  image,
+  id,
+  type,
+  showLoanButton = false,
+  multa = null,
+}) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -19,13 +27,14 @@ const Product = ({ name, info, image, id, type, showLoanButton = false }) => {
   };
 
   return (
-    <WholeProduct>
+    <WholeProduct height={multa || multa == 0 ? "35rem" : "28rem"}>
       <ProductImageContainer>
         <ProductName>{name}</ProductName>
         <div style={{ width: "100%", justifyContent: "center" }}>
           <img src={unb} alt={info} width="70%" />
         </div>
         <p>{info}</p>
+        {multa && <p>multa: {multa}</p>}
         <ProductButton onClick={handleClick}>
           {<FontAwesomeIcon icon={faEye} />}
         </ProductButton>
@@ -39,12 +48,6 @@ const Product = ({ name, info, image, id, type, showLoanButton = false }) => {
             }}
           >
             <ProductButton onClick={() => {}}>Estender prazo</ProductButton>
-            <ProductButton
-              style={{ padding: "0.5rem 2.4rem" }}
-              onClick={() => {}}
-            >
-              Devolver
-            </ProductButton>
           </div>
         )}
       </ProductImageContainer>

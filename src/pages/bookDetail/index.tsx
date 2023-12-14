@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import unb from "../../assets/unb.png";
 
 interface IEditedBook {
   isbn?: string;
@@ -65,17 +66,23 @@ const BookDetail = () => {
     }
 
     axios
-      .post(`http://localhost:5005/loan/${isbn}`, {}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .post(
+        `http://localhost:5005/loan/${isbn}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then(() => {
-        alert(`Empréstimo solicitado com sucesso`)
+        alert(`Empréstimo solicitado com sucesso`);
       })
       .catch((error) => {
         console.error("Error requesting loan:", error);
-        alert(`Houve um erro ao solicitar o empréstimo: ${error.response.data.error}`)
+        alert(
+          `Houve um erro ao solicitar o empréstimo: ${error.response.data.error}`
+        );
       });
   };
 
@@ -162,7 +169,7 @@ const BookDetail = () => {
         {book.titulo}
       </h1>
       <img
-        src={book.url_capa}
+        src={unb}
         alt={book.titulo}
         style={{
           display: "block",
@@ -200,7 +207,12 @@ const BookDetail = () => {
       <p style={{ marginBottom: "10px" }}>
         <strong>Quantidade:</strong> {book.quantidade}
       </p>
-      <button style={{ margin: 'auto', marginBottom: '10px',display: 'block' }} onClick={RequestLoan}>Solicitar Empréstimo</button>
+      <button
+        style={{ margin: "auto", marginBottom: "10px", display: "block" }}
+        onClick={RequestLoan}
+      >
+        Solicitar Empréstimo
+      </button>
       <div
         style={{
           display: "flex",
