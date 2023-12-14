@@ -52,8 +52,8 @@ const MaterialFilterComponent = ({ show, selectedCategory, setSelectedCategory }
           type="radio"
           name="all"
           id="all1"
-          value={""}
-          checked={selectedCategory === ""}
+          value={"all"}
+          checked={selectedCategory === "all"}
           onChange={handleCategoryChange}
           defaultChecked
         />

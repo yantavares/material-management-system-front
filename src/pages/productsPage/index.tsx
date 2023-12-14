@@ -112,6 +112,8 @@ const ProductsPage = () => {
           ))}
         {selectedButton === "materials" &&
           materials.map((material, index) => (
+            ((selectedCategory === "all" ||
+            material.id_categoria_material.toString() === selectedCategory)) &&
             <Product
               key={index}
               name={material.desc}
