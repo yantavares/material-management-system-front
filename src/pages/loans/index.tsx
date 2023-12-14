@@ -11,7 +11,7 @@ const Loans = () => {
     return;
   }
   const [loans, setLoans] = useState<Loan[]>([]);
-  console.log(loans)
+ 
   useEffect(() => {
     axios
     .get("http://localhost:5005/loan", {
