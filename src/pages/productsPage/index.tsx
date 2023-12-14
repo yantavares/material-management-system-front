@@ -13,6 +13,10 @@ const ProductsPage = () => {
   const [selectedButton, setSelectedButton] = useState("books");
   const [showFilters, setShowFilters] = useState(false);
 
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedAuthor, setSelectedAuthor] = useState("all");
+
+
   useEffect(() => {
     const token = sessionStorage.getItem("userToken");
 
@@ -78,12 +82,11 @@ const ProductsPage = () => {
             Filtros
           </Button>
         </ButtonsContainer>
-        {selectedButton === "books" ? ( <BookFilterComponent show={showFilters} />) :
+        {selectedButton === "books" ? ( <BookFilterComponent show={showFilters} selectedAuthor={selectedAuthor} selectedCategory={selectedCategory} setSelectedAuthor={setSelectedAuthor} setSelectedCategory={setSelectedCategory} />) :
         selectedButton === "materials" && (
-         <MaterialFilterComponent show={showFilters} />)
+         <MaterialFilterComponent show={showFilters} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />)
         }
     
-       
       </div>
       <div
         style={{
@@ -96,6 +99,8 @@ const ProductsPage = () => {
       >
         {selectedButton === "books" &&
           books.map((book, index) => (
+            ((selectedAuthor === "all" || book.id_autor.toString() === selectedAuthor)  &&((selectedCategory === "all" ||
+            book.id_categoria_livro.toString() === selectedCategory)) &&
             <Product
               key={index}
               name={book.titulo}
@@ -103,7 +108,7 @@ const ProductsPage = () => {
               image={book.url_capa || UnB}
               id={book.isbn}
               type={"book"}
-            />
+            />)
           ))}
         {selectedButton === "materials" &&
           materials.map((material, index) => (

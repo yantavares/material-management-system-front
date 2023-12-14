@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-const MaterialFilterComponent = ({ show }) => {
+const MaterialFilterComponent = ({ show, selectedCategory, setSelectedCategory }) => {
   const [categories, setCategories] = useState<Categoria[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+
   const token = sessionStorage.getItem("userToken");
 
   useEffect(() => {

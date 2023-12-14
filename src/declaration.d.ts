@@ -23,6 +23,8 @@ interface Book {
   quantidade: number;
   titulo: string;
   url_capa: string;
+  id_categoria_livro: number;
+  id_autor: number;
 }
 
 interface User {

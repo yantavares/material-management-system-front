@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-const FilterComponent = ({ show }) => {
+const FilterComponent = ({ show, selectedCategory, setSelectedCategory, selectedAuthor, setSelectedAuthor }) => {
   const [categories, setCategories] = useState<Categoria[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+
   const [authors, setAuthors] = useState<Autor[]>([]);
-  const [selectedAuthor, setSelectedAuthor] = useState("");
+
   const token = sessionStorage.getItem("userToken");
 
   useEffect(() => {
@@ -72,8 +72,8 @@ const FilterComponent = ({ show }) => {
         type="radio"
         name="all"
         id="all1"
-        value={""}
-        checked={selectedCategory === ""}
+        value={"all"}
+        checked={selectedCategory === "all"}
         onChange={handleCategoryChange}
       />
       <label htmlFor="all1">{"Todos"}</label>
@@ -99,8 +99,8 @@ const FilterComponent = ({ show }) => {
         type="radio"
         name="all2"
         id="all2"
-        value={""}
-        checked={selectedAuthor === ""}
+        value={"all"}
+        checked={selectedAuthor === "all"}
         onChange={handleAuthorChange}
       />
       <label htmlFor="all2">{"Todos"}</label>
