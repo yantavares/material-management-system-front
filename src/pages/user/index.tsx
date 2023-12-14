@@ -40,7 +40,7 @@ const UserComponent: React.FC = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
+ 
         setUserLoans(response.data);
       })
       .catch((error) => {

@@ -65,60 +65,61 @@ const FilterComponent = ({ show }) => {
         top: "9rem"
       }}
     >
-      <div>
-        <p>Categorias:</p>
+     <div>
+      <p>Categorias:</p>
+      {/* Category Selection */}
       <input
-          type="radio"
-          name="all"
-          id="all1"
-          value={""}
-          checked={selectedCategory === ""}
-          onChange={handleCategoryChange}
-          defaultChecked
-        />
-        <label htmlFor={"all1"}>{"Todos"}</label>
+        type="radio"
+        name="all"
+        id="all1"
+        value={""}
+        checked={selectedCategory === ""}
+        onChange={handleCategoryChange}
+      />
+      <label htmlFor="all1">{"Todos"}</label>
 
-        {categories?.map((category) => (
-          <div key={category.id}>
-            <input
-              type="radio"
-              id={`category_${category.id}`}
-              name="categoria"
-              value={category.id.toString()}
-              checked={selectedCategory === category.id.toString()}
-              onChange={handleCategoryChange}
-            />
-            <label htmlFor={`category_${category.id}`}>{category.nome}</label>
-          </div>
-        ))}
-      </div>
-      <div>
-        <p>Autores:</p>
-        <input
-          type="radio"
-          name="all2"
-          id="all2"
-          value={""}
-          checked={selectedCategory === ""}
-          onChange={handleCategoryChange}
-          defaultChecked
-        />
-        <label htmlFor={"all2"}>{"Todos"}</label>
-        {authors?.map((author) => (
-          <div key={author.id}>
-            <input
-              type="radio"
-              id={`author_${author.id}`}
-              name="autor"
-              value={author.id.toString()}
-              checked={selectedAuthor === author.id.toString()}
-              onChange={handleAuthorChange}
-            />
-            <label htmlFor={`author_${author.id}`}>{author.nome}</label>
-          </div>
-        ))}
-      </div>
+      {categories?.map((category) => (
+        <div key={category.id}>
+          <input
+            type="radio"
+            id={`category_${category.id}`}
+            name="categoria"
+            value={category.id.toString()}
+            checked={selectedCategory === category.id.toString()}
+            onChange={handleCategoryChange}
+          />
+          <label htmlFor={`category_${category.id}`}>{category.nome}</label>
+        </div>
+      ))}
     </div>
+    <div>
+      <p>Autores:</p>
+      {/* Author Selection */}
+      <input
+        type="radio"
+        name="all2"
+        id="all2"
+        value={""}
+        checked={selectedAuthor === ""}
+        onChange={handleAuthorChange}
+      />
+      <label htmlFor="all2">{"Todos"}</label>
+
+      {authors?.map((author) => (
+        <div key={author.id}>
+          <input
+            type="radio"
+            id={`author_${author.id}`}
+            name="autor"
+            value={author.id.toString()}
+            checked={selectedAuthor === author.id.toString()}
+            onChange={handleAuthorChange}
+          />
+          <label htmlFor={`author_${author.id}`}>{author.nome}</label>
+        </div>
+      ))}
+    </div>
+  </div>
   
   );
 };

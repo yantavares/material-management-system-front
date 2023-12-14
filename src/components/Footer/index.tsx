@@ -17,17 +17,14 @@ const devs = [
     url: "https://github.com/yantavares",
   },
   {
-    name: "fulano",
-    url: "",
+    name: "rockethm",
+    url: "https://github.com/rockethm",
   },
   {
-    name: "ciclano",
-    url: "",
+    name: "AleFreitas",
+    url: "https://github.com/AleFreitas",
   },
-  {
-    name: "beltrano",
-    url: "",
-  },
+
 ];
 
 const Footer = () => {
