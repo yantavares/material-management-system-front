@@ -40,7 +40,6 @@ const UserComponent: React.FC = () => {
         },
       })
       .then((response) => {
- 
         setUserLoans(response.data);
       })
       .catch((error) => {
@@ -77,15 +76,21 @@ const UserComponent: React.FC = () => {
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         User Information
       </h1>
-      <button
-        style={{ width: "80px" }}
-        onClick={(e) => {
-          e.preventDefault();
-          navigate("/home");
-        }}
+      <div
+        style={{ display: "flex", justifyContent: "space-around", gap: "1rem" }}
       >
-        <FontAwesomeIcon icon={faHouse} style={{ cursor: "pointer" }} />
-      </button>
+        <button>Novo Mat.</button>
+        <button
+          style={{ width: "80px" }}
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/home");
+          }}
+        >
+          <FontAwesomeIcon icon={faHouse} style={{ cursor: "pointer" }} />
+        </button>
+        <button>Novo Livro</button>
+      </div>
       <div
         style={{
           backgroundColor: "black",
