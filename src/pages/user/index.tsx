@@ -105,8 +105,10 @@ const UserComponent: React.FC = () => {
         </button>
         <button onClick={toggleNewBookForm}>Novo Livro</button>
       </div>
-      {showNewMaterialForm && <MaterialForm />}
-      {showNewBookForm && <BookForm />}
+      {showNewMaterialForm && (
+        <MaterialForm showToggle={toggleNewMaterialForm} />
+      )}
+      {showNewBookForm && <BookForm showToggle={toggleNewBookForm} />}
       <div
         style={{
           backgroundColor: "black",

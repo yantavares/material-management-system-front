@@ -11,7 +11,7 @@ interface IMaterialData {
   categoria: string;
 }
 
-const MaterialForm = () => {
+const MaterialForm = ({ showToggle }) => {
   const [materialData, setMaterialData] = useState<IMaterialData>({
     desc: "",
     data_Aquisicao: "",
@@ -31,7 +31,7 @@ const MaterialForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Submit logic here
+    showToggle();
     console.log(materialData);
   };
 

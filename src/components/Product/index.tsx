@@ -5,6 +5,7 @@ import {
   ProductName,
   WholeProduct,
 } from "./styles";
+import unb from "../../assets/unb.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +22,9 @@ const Product = ({ name, info, image, id, type, showLoanButton = false }) => {
     <WholeProduct>
       <ProductImageContainer>
         <ProductName>{name}</ProductName>
-        <img src={image} alt={info} />
+        <div style={{ width: "100%", justifyContent: "center" }}>
+          <img src={unb} alt={info} width="70%" />
+        </div>
         <p>{info}</p>
         <ProductButton onClick={handleClick}>
           {<FontAwesomeIcon icon={faEye} />}

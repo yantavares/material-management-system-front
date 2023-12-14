@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 
-const BookForm = () => {
+const BookForm = ({ showToggle }) => {
   const [bookData, setBookData] = useState({
     descricao: "",
     data_aquisicao: "",
@@ -34,7 +34,7 @@ const BookForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Submit logic here
+    showToggle();
     console.log(bookData);
   };
 
