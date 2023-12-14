@@ -16,7 +16,7 @@ function App() {
       />
       {selectedButton === "about" && <About />}
       {selectedButton === "products" && <Products />}
-      {selectedButton === "contact" && <Loans />}
+      {selectedButton === "loans" && <Loans />}
       <Footer />
     </div>
   );
