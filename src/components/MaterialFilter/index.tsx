@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-const MaterialFilterComponent = ({ show, selectedCategory, setSelectedCategory }) => {
+const MaterialFilterComponent = ({
+  show,
+  selectedCategory,
+  setSelectedCategory,
+}) => {
   const [categories, setCategories] = useState<Categoria[]>([]);
 
   const token = sessionStorage.getItem("userToken");
@@ -14,7 +18,6 @@ const MaterialFilterComponent = ({ show, selectedCategory, setSelectedCategory }
         .then((response) => response.json())
         .then((data) => {
           setCategories(data); // Assuming the response is an array of categories
-
         })
         .catch((error) => {
           console.error("Error fetching categories:", error);
@@ -22,12 +25,9 @@ const MaterialFilterComponent = ({ show, selectedCategory, setSelectedCategory }
     }
   }, [show]);
 
-
-
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
-
 
   if (!show) {
     return null;
@@ -43,12 +43,12 @@ const MaterialFilterComponent = ({ show, selectedCategory, setSelectedCategory }
         margin: "1rem",
         position: "absolute",
         right: "1rem",
-        top: "9rem"
+        top: "9rem",
       }}
     >
       <div>
         <p>Categorias:</p>
-      <input
+        <input
           type="radio"
           name="all"
           id="all1"
@@ -73,9 +73,7 @@ const MaterialFilterComponent = ({ show, selectedCategory, setSelectedCategory }
           </div>
         ))}
       </div>
-
     </div>
-  
   );
 };
 

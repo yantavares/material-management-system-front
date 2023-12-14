@@ -3,10 +3,14 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import MaterialForm from "../../components/MaterialForm";
+import BookForm from "../../components/BookForm";
 
 const UserComponent: React.FC = () => {
   const [userData, setUserData] = useState<User | null>(null);
   const [userLoans, setUserLoans] = useState<Loan[] | null>([]);
+  const [showNewMaterialForm, setShowNewMaterialForm] = useState(false);
+  const [showNewBookForm, setShowNewBookForm] = useState(false);
 
   const navigate = useNavigate();
   const userId = sessionStorage.getItem("userId");
@@ -47,6 +51,16 @@ const UserComponent: React.FC = () => {
       });
   }, []);
 
+  const toggleNewMaterialForm = () => {
+    setShowNewMaterialForm(!showNewMaterialForm);
+    setShowNewBookForm(false); // Hide the other form if it's visible
+  };
+
+  const toggleNewBookForm = () => {
+    setShowNewBookForm(!showNewBookForm);
+    setShowNewMaterialForm(false); // Hide the other form if it's visible
+  };
+
   if (!userData)
     return (
       <div
@@ -79,7 +93,7 @@ const UserComponent: React.FC = () => {
       <div
         style={{ display: "flex", justifyContent: "space-around", gap: "1rem" }}
       >
-        <button>Novo Mat.</button>
+        <button onClick={toggleNewMaterialForm}>Novo Mat.</button>
         <button
           style={{ width: "80px" }}
           onClick={(e) => {
@@ -89,8 +103,10 @@ const UserComponent: React.FC = () => {
         >
           <FontAwesomeIcon icon={faHouse} style={{ cursor: "pointer" }} />
         </button>
-        <button>Novo Livro</button>
+        <button onClick={toggleNewBookForm}>Novo Livro</button>
       </div>
+      {showNewMaterialForm && <MaterialForm />}
+      {showNewBookForm && <BookForm />}
       <div
         style={{
           backgroundColor: "black",

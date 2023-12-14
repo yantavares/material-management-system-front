@@ -10,41 +10,45 @@ const Loans = () => {
     console.error("No token found in session storage");
     return;
   }
-  const [loans, setLoans] = useState<Loan[]>([]);
- 
+  const [loans, setLoans] = useState<any[]>([]);
+
   useEffect(() => {
     axios
-    .get("http://localhost:5005/loan", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      setLoans(response.data);
-    })
-    .catch((error) => {
-      console.error("Error fetching books:", error);
-    });
-  },[])
-  return <> 
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        gap: "2rem",
-        padding: "2rem",
-      }}
-    >
-      {loans && loans.map((loan, index) => (
-        <Product
-          key={index}
-          name={loan.titulo}
-          info={loan.descricao}
-          image={loan.url_capa || UnB}
-          id={loan.isbn ? loan.isbn : loan.id }
-          type={"book"}
-        />
-      ))}
-    </div>
-  </>;
+      .get("http://localhost:5005/loan", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        setLoans(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching books:", error);
+      });
+  }, []);
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "2rem",
+          padding: "2rem",
+        }}
+      >
+        {loans &&
+          loans.map((loan, index) => (
+            <Product
+              key={index}
+              name={loan.titulo}
+              info={loan.descricao}
+              image={loan.url_capa || UnB}
+              id={loan.isbn ? loan.isbn : loan.id}
+              type={"book"}
+              showLoanButton={true}
+            />
+          ))}
+      </div>
+    </>
+  );
 };
 export default Loans;

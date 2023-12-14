@@ -14,6 +14,10 @@ const BookForm = () => {
     categorias: [],
   });
 
+  // Fake authors and categories
+  const fakeAuthors = ["Autor 1", "Autor 2", "Autor 3"];
+  const fakeCategories = ["Categoria 1", "Categoria 2", "Categoria 3"];
+
   const handleInputChange = (e) => {
     setBookData({ ...bookData, [e.target.name]: e.target.value });
   };
@@ -35,7 +39,15 @@ const BookForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+        maxWidth: "300px",
+      }}
+    >
       <label>
         Descrição:
         <input
@@ -99,16 +111,7 @@ const BookForm = () => {
           onChange={handleInputChange}
         />
       </label>
-      <label>
-        Categoria do Livro:
-        <select
-          name="id_categoria_livro"
-          value={bookData.id_categoria_livro}
-          onChange={handleInputChange}
-        >
-          {/* Options for categories */}
-        </select>
-      </label>
+
       <label>
         Autores:
         <select
@@ -116,8 +119,13 @@ const BookForm = () => {
           name="autores"
           value={bookData.autores}
           onChange={handleMultiSelectChange}
+          style={{ height: "100px" }}
         >
-          {/* Options for authors */}
+          {fakeAuthors.map((author, index) => (
+            <option key={index} value={author}>
+              {author}
+            </option>
+          ))}
         </select>
       </label>
       <label>
@@ -127,8 +135,13 @@ const BookForm = () => {
           name="categorias"
           value={bookData.categorias}
           onChange={handleMultiSelectChange}
+          style={{ height: "100px" }}
         >
-          {/* Options for categories */}
+          {fakeCategories.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
       </label>
       <button type="submit">Salvar</button>
